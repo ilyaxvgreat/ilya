@@ -3,7 +3,7 @@ package MyProgram.Work;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class BubbleSorting {
+public class BubbleSortingInArray {
 
     private int arrayQntt;
     public ArrayList<Integer> list = new ArrayList();
@@ -17,14 +17,13 @@ public class BubbleSorting {
     }
 
     public void arraySizeCreater() {
-        System.out.println("Введите количество элементов в массиве");
+        System.out.println("Enter the number of elements for the array");
         Scanner scn = new Scanner(System.in);
         while (!scn.hasNextInt()) {
             System.out.println("Input int");
             scn.next(); // this is important!
         }
         setArrayQntt(scn.nextInt());
-
     }
 
     public void arrayElementsCreater() {

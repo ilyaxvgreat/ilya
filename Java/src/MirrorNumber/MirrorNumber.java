@@ -31,10 +31,6 @@ public class MirrorNumber {
             mirror = mirror * 10 + (num % 10);
             num = num / 10;
         }
-//        while (num != 0) {
-//            mirror = mirror * 10 + (num % 10);
-//            num = num / 10;
-//        }
         System.out.println("Ваше число: " + getInputNumber());
         System.out.println("Зеркально: " + mirror);
     }
