@@ -18,39 +18,7 @@ class EratosfenPalindromeFinder {
     private int maxNumber = 100000;
 
     public EratosfenPalindromeFinder() {
-        primes = new boolean[getMaxNumber() + 1];
-    }
-
-    private int getMinNumber() {
-        return minNumber;
-    }
-
-    public int getMaxNumber() {
-        return maxNumber;
-    }
-
-    private long getPalindrome() {
-        return palindrome;
-    }
-
-    private void setPalindrome(long palindrome) {
-        this.palindrome = palindrome;
-    }
-
-    private float getFirstPalindromeMultiplier() {
-        return firstPalindromeMultiplier;
-    }
-
-    private void setFirstPalindromeMultiplier(int firstPalindromeMultiplier) {
-        this.firstPalindromeMultiplier = firstPalindromeMultiplier;
-    }
-
-    private float getSecondPalindromeMultiplier() {
-        return secondPalindromeMultiplier;
-    }
-
-    private void setSecondPalindromeMultiplier(int secondPalindromeMultiplier) {
-        this.secondPalindromeMultiplier = secondPalindromeMultiplier;
+        primes = new boolean[maxNumber + 1];
     }
 
     public void fillSieve() {
@@ -64,16 +32,13 @@ class EratosfenPalindromeFinder {
                 }
             }
         }
-        for (int i = 0; i < primes.length; i++) {
+    }
+
+    public void chooseFiveDigitPrimeNumbersFromArray() {
+        for (int i = minNumber; i < maxNumber; i++) {
             if (primes[i]) {
                 eratosfenPrimesNumbers.add(i);
             }
-        }
-    }
-
-    public void selectionFiveDigitPrimeNumbersFromArray() {
-        for (int i = 0; i < eratosfenPrimesNumbers.size(); i++) {
-            eratosfenPrimesNumbers.removeIf(y -> (y < getMinNumber()));
         }
     }
 
@@ -86,20 +51,20 @@ class EratosfenPalindromeFinder {
                 if (isPalindrome(palindrome)) {
                     if (max < palindrome) {
                         max = palindrome;
-                        setFirstPalindromeMultiplier(eratosfenPrimesNumbers.get(i));
-                        setSecondPalindromeMultiplier(eratosfenPrimesNumbers.get(j));
-                        setPalindrome(palindrome);
+                        firstPalindromeMultiplier = eratosfenPrimesNumbers.get(i);
+                        secondPalindromeMultiplier = eratosfenPrimesNumbers.get(j);
+                        this.palindrome = palindrome;
                     }
                 }
             }
         }
     }
 
-    //print of the palindrome and its multipliers
-    public void printPalindrome() {
-        System.out.println("Palindrome " + getPalindrome() + "\n" +
-                "Num 1 " + getFirstPalindromeMultiplier() + "\n" +
-                "Num 2 " + getSecondPalindromeMultiplier());
+    //to String the palindrome and its multipliers
+    public String toString() {
+        return "Palindrome " + palindrome + "\n" +
+                "Num 1 " + firstPalindromeMultiplier + "\n" +
+                "Num 2 " + secondPalindromeMultiplier;
     }
 
     //checking the number on the palindrome
@@ -115,6 +80,4 @@ class EratosfenPalindromeFinder {
         }
         return number == reverse;
     }
-
-
 }
