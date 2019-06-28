@@ -12,75 +12,27 @@ public class Data {
 //      a9 = {3, -1};
 //     a10 = {-1, 3};
 
-    private Map<Integer, List<Integer>> data = new HashMap<Integer, List<Integer>>();
+    private Map<Integer, Integer> data = new HashMap<Integer, Integer>();
 
-    private List<Integer> numbers1 = new ArrayList<Integer>() {{
-        add(1);
-        add(0);
-    }};
-
-    private List<Integer> numbers2 = new ArrayList<Integer>() {{
-        add(2);
-        add(7);
-    }};
-
-    private List<Integer> numbers3 = new ArrayList<Integer>() {{
-        add(-1);
-        add(3);
-    }};
-
-    private List<Integer> numbers4 = new ArrayList<Integer>() {{
-        add(7);
-        add(2);
-    }};
-
-    private List<Integer> numbers5 = new ArrayList<Integer>() {{
-        add(3);
-        add(-1);
-    }};
-
-    private List<Integer> numbers6 = new ArrayList<Integer>() {{
-        add(7);
-        add(2);
-    }};
-
-    private List<Integer> numbers7 = new ArrayList<Integer>() {{
-        add(0);
-        add(8);
-    }};
-
-    private List<Integer> numbers8 = new ArrayList<Integer>() {{
-        add(7);
-        add(2);
-    }};
-
-    private List<Integer> numbers9 = new ArrayList<Integer>() {{
-        add(3);
-        add(-1);
-    }};
-
-    private List<Integer> numbers10 = new ArrayList<Integer>() {{
-        add(-1);
-        add(3);
-    }};
 
     public void putInHashMap() {
-        data.put(1, numbers1);
-        data.put(2, numbers2);
-        data.put(3, numbers3);
-        data.put(4, numbers4);
-        data.put(5, numbers5);
-        data.put(6, numbers6);
-        data.put(7, numbers7);
-        data.put(8, numbers8);
-        data.put(9, numbers9);
-        data.put(10, numbers10);
+        data.put(1, 0);
+        data.put(2, 7);
+        data.put(-1, 3);
+        data.put(7, 2);
+        data.put(3, -1);
+        data.put(7, 2);
+        data.put(0, 8);
+        data.put(7, 2);
+        data.put(3, -1);
+        data.put(-1, 3);
     }
 
     public void test() {
-        for (Map.Entry<Integer, List<Integer>> entry : data.entrySet()) {
-            if (data.containsValue(reverse(numbers10))) {
+        for (Map.Entry<Integer, Integer> entry : data.entrySet()) {
+            if (data.containsKey(entry.getValue()) && data.containsValue(entry.getKey())) {
                 System.out.println("Good");
+                System.out.println( data.containsKey(entry.getValue()) + " " + data.containsValue(entry.getKey()));
             }
         }
     }
