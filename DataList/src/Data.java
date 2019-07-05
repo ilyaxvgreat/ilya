@@ -1,22 +1,8 @@
-import javax.swing.text.html.HTMLDocument;
-import java.awt.List;
-import java.lang.reflect.Array;
-import java.security.KeyStore;
 import java.util.*;
 
 
 public class Data {
-//    public Integer a1 = new int[1, 0];
-//      a2 = {2, 7};
-//      a3 = {-1, 3};
-//      a4 = {7, 2};
-//      a5 = {3, -1};
-//      a6 = {7, 2};
-//      a7 = {0, 8};
-//      a8 = {7, 2};
-//      a9 = {3, -1};
-//     a10 = {-1, 3};
-
+    
     private HashMap<NumbersPair, Integer> data = new HashMap<>();
 
     public void putInHashMap() {
@@ -33,36 +19,26 @@ public class Data {
     }
 
     public void test() {
-        
-        for (Map.Entry<NumbersPair, Integer> i : data.entrySet()) {
-            for (Map.Entry<NumbersPair, Integer> j : data.entrySet()) {
-                if (i.getKey().getSecondNumber() == j.getKey().getFirstNumber() && i.getKey().getFirstNumber() == j.getKey().getSecondNumber()) {
-                    int value;
-                    value = data.get(i);
-                    value++;
-                    data.put((NumbersPair) i, value);
-                    data.remove(j);
-                    System.out.println("GOOD ");
+        Iterator it = data.entrySet().iterator();
 
+        for (Map.Entry<NumbersPair, Integer> entry1 : data.entrySet()) {
+            for (Map.Entry<NumbersPair, Integer> entry2 : data.entrySet()) {
+
+                NumbersPair key1 = entry1.getKey();
+                Integer value1 = entry1.getValue();
+
+                NumbersPair key2 = entry2.getKey();
+
+                while (it.hasNext()) {
+                    if (key1.getFirstNumber() == key2.getSecondNumber() && key2.getFirstNumber() == key1.getSecondNumber()) {
+                        value1++;
+                        data.put((NumbersPair) entry1,value1);
+                        System.out.println("Good");
+                        it.remove();
+                    }
                 }
             }
         }
-
-//        for (NumbersPair i : data.keySet()) {
-//            for (NumbersPair j : data.keySet()) {
-//                if (i.getFirstNumber() == j.getFirstNumber() && i.getSecondNumber() == j.getSecondNumber()) {
-//                    int value = data.get(i);
-//                    value++;
-//                    data.put(i, value);
-//                    data.remove(j);
-//                    System.out.println("GOOD " + i.getFirstNumber() + " " + i.getSecondNumber() + " " + j.getSecondNumber() + " " + j.getFirstNumber() + data.);
-//
-//                    break;
-//                }
-//            }
-//        }
-//                System.out.println("[ " + entry.getKey() + " ; " + entry.getValue() + " ]" +
-//                        "[ " + entry.getValue() + " ; " + entry.getKey() + " ]");
     }
 }
 
