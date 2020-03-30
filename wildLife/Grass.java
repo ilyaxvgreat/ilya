@@ -14,13 +14,17 @@ public class Grass extends Living {
         super.column = column;
     }
 
+    /**
+     * A grass occupies the square.
+     */
+
     public State who() {
-        // TODO
         return State.GRASS;
     }
 
     /**
-     * Grass can be eaten out by too many rabbits. Rabbits may also multiply fast enough to take over Grass.
+     * Grass can be eaten out by too many rabbits.
+     * Rabbits may also multiply fast enough to take over Grass.
      */
     public Living next(Plain pNew) {
         int[] neighbors = new int[Living.NUM_LIFE_FORMS];

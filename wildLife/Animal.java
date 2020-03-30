@@ -4,7 +4,7 @@ package edu.iastate.cs228.hw1;
  * @author
  */
 
-/*
+/**
  * This class is to be extended by the Badger, Fox, and Rabbit classes.
  */
 

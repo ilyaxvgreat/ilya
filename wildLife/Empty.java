@@ -8,18 +8,32 @@ package edu.iastate.cs228.hw1;
  * Empty squares are competed by various forms of life.
  */
 public class Empty extends Living {
+
+    /**
+     * Constructor
+     *
+     * @param plain:  plain
+     * @param row:    row position
+     * @param column: column position
+     */
+
     public Empty(Plain plain, int row, int column) {
         super.plain = plain;
         super.row = row;
         super.column = column;
     }
 
+    /**
+     * A empty occupies the square.
+     */
+
     public State who() {
         return State.EMPTY;
     }
 
     /**
-     * An empty square will be occupied by a neighboring Badger, Fox, Rabbit, or Grass, or remain empty.
+     * An empty square will be occupied by a neighboring Badger, Fox, Rabbit, or Grass,
+     * or remain empty.
      *
      * @param pNew plain of the next life cycle.
      * @return Living  life form in the next cycle.

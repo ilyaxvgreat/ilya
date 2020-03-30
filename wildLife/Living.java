@@ -31,12 +31,15 @@ public abstract class Living {
 
     /**
      * Censuses all life forms in the 3 X 3 neighborhood in a plain.
+     * <p>
+     * Count the numbers of Badgers, Empties, Foxes, Grasses, and Rabbits
+     * in the 3x3 neighborhood centered at this Living object.  Store the
+     * counts in the array population[] at indices 0, 1, 2, 3, 4, respectively.
      *
      * @param population counts of all life forms
      * @param plain
      */
     protected void census(int[] population, Plain plain) {
-        //System.out.println(plain.grid[row][column]);
         for (int i = row - 1; i <= row + 1; i++) {
             for (int j = column - 1; j <= column + 1; j++) {
                 if (!(plain.grid[i][j] == null)) {
@@ -47,11 +50,6 @@ public abstract class Living {
                 }
             }
         }
-        // TODO
-        //
-        // Count the numbers of Badgers, Empties, Foxes, Grasses, and Rabbits
-        // in the 3x3 neighborhood centered at this Living object.  Store the
-        // counts in the array population[] at indices 0, 1, 2, 3, 4, respectively.
     }
 
     /**

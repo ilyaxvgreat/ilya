@@ -22,12 +22,6 @@ public class Plain {
      * Default constructor reads from a file
      */
     public Plain(String inputFileName) throws FileNotFoundException {
-        // TODO 
-        // Assumption: The input file is in correct format.
-        // You may create the grid plain in the following steps:
-        // Be sure to close the input file when you are done.
-        //
-        // 1) Reads the first line to determine the width of the grid.
         File fileReader = new File(inputFileName);
         Scanner fileScanner = new Scanner(fileReader);
         while (fileScanner.hasNextLine()) {
@@ -91,30 +85,26 @@ public class Plain {
      * Every animal starts at age 0.
      */
     public void randomInit() {
-        Plain plain = new Plain(width);
-        grid = new Living[width][width];
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                Random random = new Random(5);
-                int randomNum = random.nextInt();
+        Plain plain = new Plain(width + 2);
+        grid = new Living[width + 2][width + 2];
+        for (int i = 1; i < grid.length - 1; i++) {
+            for (int j = 1; j < grid[i].length - 1; j++) {
+                int randomNum = (int) (Math.random() * 5);
                 switch (randomNum) {
                     case 0:
                         grid[i][j] = new Badger(plain, i, j, 0);
-                        System.out.println(randomNum);
                         break;
                     case 1:
                         grid[i][j] = new Empty(plain, i, j);
                         break;
                     case 2:
                         grid[i][j] = new Fox(plain, i, j, 0);
-                        System.out.println(randomNum);
                         break;
                     case 3:
                         grid[i][j] = new Grass(plain, i, j);
                         break;
                     case 4:
                         grid[i][j] = new Rabbit(plain, i, j, 0);
-                        System.out.println(randomNum);
                         break;
                 }
             }
@@ -129,7 +119,7 @@ public class Plain {
      */
     public String toString() {
         // TODO
-        return "Plain" + hashCode();
+        return "Plain";
     }
 
     /**
@@ -138,7 +128,16 @@ public class Plain {
      *
      * @throws FileNotFoundException
      */
-    public void write(String outputFileName) throws FileNotFoundException {
+    public void write(String outputFileName) throws IOException {
+        FileWriter fileWriter = new FileWriter(outputFileName);
+
+        for (int i = 1; i < grid.length - 1; i++) {
+            for (int j = 1; j < grid[i].length - 1; j++) {
+                fileWriter.write(grid[i][j].toString() + " ");
+                fileWriter.flush();
+            }
+            fileWriter.write("\n");
+        }
         // TODO
         //
         // 1. Open the file.
